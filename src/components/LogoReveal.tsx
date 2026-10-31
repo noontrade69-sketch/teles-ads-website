@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import { Mark } from "@/components/Mark";
+import Image from "next/image";
 
 const Scene = dynamic(() => import("./MarkScene"), { ssr: false });
 
@@ -31,7 +31,7 @@ export default function LogoReveal() {
     <section className="logo" aria-label="TELES ADS mark">
       <div className="logo-pin" ref={ref}>
         <div className="logo-glow" aria-hidden="true" />
-        <Mark className="logo-fallback" aria-hidden="true" />
+        <Image className="logo-fallback" src="/images/logo-glass.png" alt="" width={520} height={520} priority={false} />
         {active && <Scene />}
         <div className="logo-flash" aria-hidden="true" />
       </div>

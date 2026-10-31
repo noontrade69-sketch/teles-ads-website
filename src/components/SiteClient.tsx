@@ -27,7 +27,7 @@ function Loader() {
     try { sessionStorage.setItem("teles-intro-seen", "1"); } catch { /* storage disabled */ }
 
     const t0 = performance.now();
-    const DUR = 2400;
+    const DUR = 2500;
     const tick = (t: number) => {
       const p = Math.min(1, (t - t0) / DUR);
       setPct(Math.round(p * 100));
@@ -96,7 +96,8 @@ function MotionController() {
 
       /* reduced motion → static page, simple opacity fades only */
       if (reduce) {
-        gsap.utils.toArray<HTMLElement>(".hl > span, .nl > span, .folder, .pstep").forEach((el) => {
+        document.fonts?.ready.then(() => ScrollTrigger.refresh());
+        gsap.utils.toArray<HTMLElement>(".hl > span, .folder, .pstep").forEach((el) => {
           gsap.fromTo(el, { opacity: 0 }, { opacity: 1, duration: .6, scrollTrigger: { trigger: el, start: "top 92%", once: true } });
         });
         return;
@@ -159,16 +160,17 @@ function MotionController() {
           const mq = gsap.timeline({
             scrollTrigger: { trigger: ".marquee", start: "top top", end: "+=300%", scrub: 0.8, pin: true, anticipatePin: 1 },
           });
-          mq.fromTo(".marquee-sentence", { xPercent: 4 }, { xPercent: -38, ease: "none" }, 0)
-            .fromTo(".book-rot", { rotationY: -32 }, { rotationY: 208, ease: "none" }, 0);
+const sent = document.querySelector<HTMLElement>(".marquee-sentence");
+          if (sent) {
+            mq.fromTo(sent, { x: 0 }, { x: () => Math.min(0, innerWidth - sent.scrollWidth - 48), ease: "none" }, 0);
+          }
+          mq.fromTo(".book-rot", { rotationY: -32 }, { rotationY: 208, ease: "none" }, 0);
 
           /* ---------- 3 · NOISE pin: zoom + slabs rise ---------- */
           const nz = gsap.timeline({
-            scrollTrigger: { trigger: ".noise", start: "top top", end: "+=170%", scrub: 0.8, pin: true, anticipatePin: 1 },
+            scrollTrigger: { trigger: ".noise", start: "top top", end: "+=170%", scrub: 0.5, pin: true, anticipatePin: 1 },
           });
-          nz.fromTo(".noise-h .nl > span", { yPercent: 110 }, { yPercent: 0, duration: 0.22, stagger: 0.06, ease: "power3.out" }, 0.01)
-            .fromTo(".noise-aside", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.15 }, 0.08)
-            .fromTo(".noise-img", { scale: 1, yPercent: 0 }, { scale: 1.18, yPercent: -6, ease: "none" }, 0)
+          nz.fromTo(".noise-img", { scale: 1, yPercent: 0 }, { scale: 1.2, yPercent: -6, ease: "none" }, 0)
             .to(".slab-yellow", { yPercent: 0, ease: "none", duration: 0.5 }, 0.5)
             .to(".slab-orange", { yPercent: 0, ease: "none", duration: 0.5 }, 0.56);
 
@@ -181,12 +183,14 @@ function MotionController() {
             });
             cs.to(track, { x: dist, ease: "none" }, 0)
               .to(".scatter", { opacity: 1, ease: "none", duration: 0.02 }, 0.62)
-              .fromTo(".sc-1", { x: 0, y: 0, scale: 0.5, opacity: 0 }, { x: "-32vw", y: "-26vh", scale: 1, opacity: 1, ease: "none", duration: 0.3 }, 0.64)
-              .fromTo(".sc-2", { x: 0, y: 0, scale: 0.4, opacity: 0 }, { x: "-14vw", y: "-30vh", scale: 1, opacity: 1, ease: "none", duration: 0.3 }, 0.66)
-              .fromTo(".sc-3", { x: 0, y: 0, scale: 0.5, opacity: 0 }, { x: "30vw", y: "-24vh", scale: 1, opacity: 1, ease: "none", duration: 0.3 }, 0.66)
-              .fromTo(".sc-4", { x: 0, y: 0, scale: 0.4, opacity: 0 }, { x: "-26vw", y: "22vh", scale: 1, opacity: 1, ease: "none", duration: 0.3 }, 0.68)
-              .fromTo(".sc-photo", { x: 0, scale: 0.4, opacity: 0 }, { x: "6vw", scale: 1, opacity: 1, ease: "none", duration: 0.34 }, 0.66)
-              .fromTo(".glitch", { opacity: 0.9 }, { opacity: 0.35, ease: "none", duration: 0.3 }, 0.7);
+              .fromTo(".sc-photo", { x: 0, scale: 0.4, opacity: 0 }, { x: "4vw", scale: 1, opacity: 1, ease: "none", duration: 0.3 }, 0.64)
+              .fromTo(".sc-julytab", { yPercent: 60, opacity: 0 }, { yPercent: 0, opacity: 1, ease: "none", duration: 0.26 }, 0.64)
+              .fromTo(".sc-app", { x: 0, scale: 0.4, opacity: 0 }, { x: "26vw", y: "18vh", scale: 1, opacity: 1, ease: "none", duration: 0.26 }, 0.66)
+              .fromTo(".sc-1", { x: 0, y: 0, scale: 0.5, opacity: 0 }, { x: "-21vw", y: "-17vh", scale: 1, opacity: 1, ease: "none", duration: 0.28 }, 0.64)
+              .fromTo(".sc-2", { x: 0, y: 0, scale: 0.4, opacity: 0 }, { x: "-9vw", y: "-21vh", scale: 1, opacity: 1, ease: "none", duration: 0.28 }, 0.66)
+              .fromTo(".sc-3", { x: 0, y: 0, scale: 0.5, opacity: 0 }, { x: "19vw", y: "-15vh", scale: 1, opacity: 1, ease: "none", duration: 0.28 }, 0.66)
+              .fromTo(".glitch", { opacity: 0.9 }, { opacity: 0.4, ease: "none", duration: 0.3 }, 0.7)
+              .to(".scard", { xPercent: -4, scale: 0.94, ease: "none", duration: 0.14 }, 0.86);
             gsap.utils.toArray<HTMLElement>(".deck").forEach((deck, i) => {
               cs.fromTo(deck, { xPercent: 8 + i * 2 }, { xPercent: -8 - i * 2, ease: "none" }, 0);
             });
@@ -239,8 +243,8 @@ function MotionController() {
             });
             pr.to(rope, { strokeDashoffset: 0, ease: "none" }, 0)
               .to(hi, { strokeDashoffset: 0, ease: "none" }, 0)
-              .fromTo(".edge-tape-l", { yPercent: 8 }, { yPercent: -8, ease: "none" }, 0)
-              .fromTo(".edge-tape-r", { yPercent: -8 }, { yPercent: 8, ease: "none" }, 0);
+              .fromTo(".edge-ribbon-l", { yPercent: 6 }, { yPercent: -6, ease: "none" }, 0)
+              .fromTo(".edge-ribbon-r", { yPercent: -6 }, { yPercent: 6, ease: "none" }, 0);
           }
         }
 
@@ -255,29 +259,82 @@ function MotionController() {
         });
 
         /* ---------- 8 · FOOTER tape pile: fall, settle, cursor push ---------- */
-        const pile = document.querySelector(".tape-pile");
+        const pile = document.querySelector<HTMLElement>(".tape-pile");
         if (pile) {
           const strips = gsap.utils.toArray<HTMLElement>(".tp");
-          ScrollTrigger.create({
-            trigger: ".footer", start: "top 80%", once: true,
-            onEnter: () => {
-              strips.forEach((s, i) => {
-                gsap.fromTo(s, { yPercent: -160, rotation: 0, opacity: 0 },
-                  { yPercent: 0, opacity: 1, rotation: (i - 2.5) * 7, duration: 1.1, ease: "bounce.out", delay: i * 0.08 });
-              });
-            },
-          });
-          if (desktop) {
-            const foot = document.querySelector<HTMLElement>(".footer");
-            const onMove = (e: MouseEvent) => {
-              const nx = e.clientX / innerWidth - 0.5;
-              strips.forEach((s, i) => gsap.to(s, { x: nx * (10 + i * 4), duration: 1.1, ease: "power2.out" }));
-            };
-            foot?.addEventListener("mousemove", onMove);
+          /* Physics drop (matter-js) on desktop; CSS strips stay as the
+             static fallback on mobile / reduced motion (handled in CSS/JSX). */
+          if (window.innerWidth > 900) {
+            pile.classList.add("phys");
+            let raf = 0;
+            let alive = true;
+            let cursor = { x: -1e4, y: -1e4 };
+            ScrollTrigger.create({
+              trigger: ".footer", start: "top 80%", once: true,
+              onEnter: async () => {
+                const M = await import("matter-js");
+                const W = pile.clientWidth;
+                const H = pile.clientHeight;
+                const engine = M.Engine.create({ gravity: { y: 1.5 } });
+                const T = 600;
+                M.Composite.add(engine.world, [
+                  M.Bodies.rectangle(W / 2, H + T / 2 - 14, W * 2, T, { isStatic: true }),
+                  M.Bodies.rectangle(-T / 2, H / 2, T, H * 3, { isStatic: true }),
+                  M.Bodies.rectangle(W + T / 2, H / 2, T, H * 3, { isStatic: true }),
+                ]);
+                const bodies = strips.map((el, i) => {
+                  const b = M.Bodies.rectangle(
+                    W * (0.16 + (i / Math.max(1, strips.length - 1)) * 0.68),
+                    -120 - i * 110,
+                    el.offsetWidth,
+                    el.offsetHeight,
+                    { restitution: 0.16, friction: 0.72, frictionAir: 0.016, angle: (i % 2 ? 1 : -1) * (0.24 + (i % 3) * 0.09) },
+                  );
+                  M.Composite.add(engine.world, b);
+                  return b;
+                });
+                const onMove = (e: PointerEvent) => {
+                  const r = pile.getBoundingClientRect();
+                  cursor = { x: e.clientX - r.left, y: e.clientY - r.top };
+                };
+                window.addEventListener("pointermove", onMove);
+                const tick = () => {
+                  if (!alive) return;
+                  M.Engine.update(engine, 1000 / 60);
+                  strips.forEach((el, i) => {
+                    const b = bodies[i];
+                    const dx = b.position.x - cursor.x;
+                    const dy = b.position.y - cursor.y;
+                    if (dx * dx + dy * dy < 170 * 170) {
+                      const f = 1.1 / Math.max(70, Math.sqrt(dx * dx + dy * dy));
+                      M.Body.applyForce(b, b.position, { x: dx * f * 0.0016, y: dy * f * 0.0009 });
+                    }
+                    el.style.transform = `translate(${b.position.x - el.offsetWidth / 2}px, ${b.position.y - el.offsetHeight / 2}px) rotate(${b.angle}rad)`;
+                  });
+                  raf = requestAnimationFrame(tick);
+                };
+                tick();
+                (pile as HTMLElement & { _teardown?: () => void })._teardown = () => {
+                  alive = false;
+                  cancelAnimationFrame(raf);
+                  window.removeEventListener("pointermove", onMove);
+                };
+              },
+            });
+          } else {
+            ScrollTrigger.create({
+              trigger: ".footer", start: "top 80%", once: true,
+              onEnter: () => {
+                strips.forEach((s, i) => {
+                  gsap.fromTo(s, { yPercent: -160, rotation: 0, opacity: 0 },
+                    { yPercent: 0, opacity: 1, rotation: (i - 2.5) * 7, duration: 1.1, ease: "bounce.out", delay: i * 0.08 });
+                });
+              },
+            });
           }
-        }
+          }
 
-        /* section heading reveals outside pins */
+          /* section heading reveals outside pins */
         gsap.utils.toArray<HTMLElement>(".folders-head h2, .foot-cta h2").forEach((h) => {
           gsap.fromTo(h, { y: 42, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: h, start: "top 88%", once: true } });
         });

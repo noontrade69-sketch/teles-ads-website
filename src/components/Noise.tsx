@@ -2,14 +2,14 @@ import Image from "next/image";
 import { Mark } from "@/components/Mark";
 
 /* Section 3 — "Stand out from the noise…" B/W crowd with the golden figure,
-   zoom-parallax, floating logomark, then yellow/orange slabs rise and become
-   the first case-study panels. */
+   scroll-linked zoom ONLY (per fix report): static headline/aside/logomark,
+   image scale 1 -> 1.2 with slight drift, then slabs rise into the cases. */
 export default function Noise() {
   return (
     <section className="noise" id="about" aria-label="Stand out from the noise">
       <div className="noise-pin">
         <div className="noise-img" aria-hidden="true">
-          <Image src="/images/crowd.webp" alt="" fill sizes="100vw" quality={85} />
+          <Image src="/images/crowd-3d.jpg" alt="" fill sizes="100vw" quality={85} />
         </div>
         <div className="noise-shade" aria-hidden="true" />
         <Mark className="noise-mark" />

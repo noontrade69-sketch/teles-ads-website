@@ -39,9 +39,16 @@ export default function Process() {
             </div>
           </div>
         ))}
-
-        <Tape className="edge-tape edge-tape-l" repeat={4} />
-        <Tape className="edge-tape edge-tape-r" repeat={4} />
+        <svg className="edge-ribbon edge-ribbon-l" viewBox="0 0 300 900" aria-hidden="true">
+          <defs><path id="erl" d="M-40 40 C120 120 240 60 200 220 C160 380 40 340 80 500 C120 660 240 600 220 780 C210 850 160 880 120 890" /></defs>
+          <use href="#erl" fill="none" stroke="#FFD60A" strokeWidth="34" />
+          <text className="edge-ribbon-text"><textPath href="#erl">ADVERTISEMENT /// ADVERTISEMENT /// ADVERTISEMENT /// ADVERTISEMENT ///</textPath></text>
+        </svg>
+        <svg className="edge-ribbon edge-ribbon-r" viewBox="0 0 300 900" aria-hidden="true">
+          <defs><path id="err" d="M340 60 C200 20 90 140 180 260 C270 380 320 300 280 460 C240 620 120 560 160 720 C190 830 260 850 300 870" /></defs>
+          <use href="#err" fill="none" stroke="#FFD60A" strokeWidth="34" />
+          <text className="edge-ribbon-text"><textPath href="#err">ADVERTISEMENT /// ADVERTISEMENT /// ADVERTISEMENT /// ADVERTISEMENT ///</textPath></text>
+        </svg>
       </div>
     </section>
   );
