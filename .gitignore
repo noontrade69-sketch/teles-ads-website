@@ -6,3 +6,5 @@ next-env.d.ts
 public/images/crowd.png
 scripts/audit*.cjs
 scripts/axe*.cjs
+.vercel
+.env*
