@@ -27,7 +27,7 @@ function Loader() {
     try { sessionStorage.setItem("teles-intro-seen", "1"); } catch { /* storage disabled */ }
 
     const t0 = performance.now();
-    const DUR = 1500;
+    const DUR = 2400;
     const tick = (t: number) => {
       const p = Math.min(1, (t - t0) / DUR);
       setPct(Math.round(p * 100));
@@ -135,7 +135,8 @@ function MotionController() {
             .to(".hero-ghost.g1", { opacity: 0, ease: "none" }, 0.55)
             .to(".hero-ghost.g2", { opacity: 0, ease: "none" }, 0.55)
             .to(".hero-bustwrap", { scale: 1.08, yPercent: 10, ease: "none" }, 0)
-            .to(".eyebrow, .hero-sub, .hero-actions, .hero-note, .hero-badge", { opacity: 0, ease: "none" }, 0);
+            .to(".eyebrow, .hero-sub, .hero-actions, .hero-note, .hero-badge", { opacity: 0, ease: "none" }, 0)
+            .fromTo(".hero-peek", { yPercent: 130, opacity: 0 }, { yPercent: 22, opacity: 1, ease: "none" }, 0.45);
           cards.forEach((card) => {
             const d = parseFloat(card.dataset.depth || "1");
             heroTl.to(card, { y: -(140 + d * 190), x: -(30 + d * 80), rotation: d > 1.2 ? -6 : 5, ease: "none" }, 0);

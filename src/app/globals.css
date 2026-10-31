@@ -120,7 +120,8 @@ h1, h2, h3, p { margin: 0; }
 .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(0, 0, 0, 0.028) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.028) 1px, transparent 1px); background-size: 92px 92px; mask-image: linear-gradient(90deg, transparent, #000 45%, transparent); pointer-events: none; }
 .hero-stage { position: absolute; inset: 0 0 0 20%; pointer-events: none; }
 .hero-halo { position: absolute; right: 4%; top: 14%; width: 62%; height: 64%; background: radial-gradient(circle, rgba(255, 214, 10, 0.30), transparent 70%); filter: blur(24px); }
-.hero-bustwrap { position: absolute; left: 47%; bottom: -5%; transform: translateX(-50%); height: 103%; width: auto; aspect-ratio: 742 / 1220; }
+.hero-bustwrap { position: absolute; left: 47%; bottom: -5%; transform: translateX(-50%); height: 103%; width: auto; aspect-ratio: 742 / 1220; animation: breathe 7s ease-in-out infinite; }
+@keyframes breathe { 0%, 100% { scale: 1; } 50% { scale: 1.02; } }
 .hero-bust { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 46px 46px rgba(90, 66, 0, 0.20)); }
 
 /* floating cards */
@@ -184,6 +185,7 @@ h1, h2, h3, p { margin: 0; }
 .badge-plus { font-size: 30px; font-weight: 300; color: var(--ink); }
 @keyframes badgeSpin { to { transform: rotate(360deg); } }
 
+.hero-peek { position: absolute; z-index: 1; left: 4vw; bottom: -6vw; font-family: var(--font-serif), Georgia, serif; font-size: clamp(90px, 14vw, 230px); line-height: 1; color: var(--ink); letter-spacing: -0.03em; white-space: nowrap; opacity: 0; pointer-events: none; }
 .hero-note { position: absolute; z-index: 11; right: 3.8vw; bottom: 34px; color: #6f6e69; line-height: 1.75; background: rgba(244,245,247,.72); padding: 6px 10px; border-radius: 8px; backdrop-filter: blur(2px); }
 
 /* ============================================================
@@ -192,7 +194,7 @@ h1, h2, h3, p { margin: 0; }
 .marquee { position: relative; background: var(--paper); }
 .marquee-pin { height: 100svh; min-height: 700px; display: grid; place-items: center; overflow: hidden; position: relative; }
 .marquee-track { position: absolute; width: 100%; overflow: visible; z-index: 1; }
-.marquee-sentence {
+.marquee-sentence { text-shadow: 0 22px 44px rgba(10, 10, 10, 0.14);
   white-space: nowrap; width: max-content;
   font-family: var(--font-serif), Georgia, serif;
   font-size: clamp(90px, 14vw, 230px); line-height: 1; letter-spacing: -0.03em;
@@ -256,7 +258,7 @@ h1, h2, h3, p { margin: 0; }
 .case-disc { position: absolute; left: 4vw; bottom: 18px; opacity: 0.6; color: inherit; }
 .case-yellow .case-disc { color: var(--ink); }
 .deck { position: absolute; left: 6vw; right: 6vw; bottom: -4%; height: 62%; perspective: 1100px; }
-.dcard {
+.dcard { transition: translate 0.35s var(--ease);
   position: absolute; bottom: 0; width: clamp(150px, 17vw, 240px); aspect-ratio: 3 / 3.9;
   border-radius: 18px; border: 2px solid rgba(255, 255, 255, 0.92); overflow: hidden;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3); background: #fff;
@@ -293,8 +295,8 @@ h1, h2, h3, p { margin: 0; }
 /* ============================================================
    5 · LOGO REVEAL
    ============================================================ */
-.logo { position: relative; background: var(--charcoal); }
-.logo-pin { position: relative; height: 100svh; min-height: 680px; overflow: hidden; display: grid; place-items: center; }
+.logo { position: relative; background: #141310; }
+.logo-pin { position: relative; height: 100svh; min-height: 680px; overflow: hidden; display: grid; place-items: center; background: radial-gradient(120% 90% at 50% 46%, #3d3220 0%, #242219 42%, #11100d 100%); }
 .logo-glow { position: absolute; inset: 0; background: radial-gradient(circle at 50% 46%, rgba(255, 176, 40, 0.34), rgba(34, 34, 31, 0) 58%); will-change: transform; }
 .logo-fallback { width: clamp(150px, 22vw, 260px); color: var(--amber); filter: drop-shadow(0 0 60px rgba(255, 154, 61, 0.65)); transition: opacity 0.5s; }
 .logo-pin:has(.logo-canvas) .logo-fallback { opacity: 0; }
@@ -358,6 +360,7 @@ h1, h2, h3, p { margin: 0; }
 .footer { position: relative; background: var(--charcoal); color: #fff; overflow: hidden; padding: 110px 4vw 0; }
 .foot-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; max-width: 1380px; margin: 0 auto; }
 .foot-cta h2 { font-family: var(--font-serif), Georgia, serif; font-weight: 400; font-size: clamp(40px, 4.6vw, 76px); line-height: 1.0; letter-spacing: -0.03em; margin-bottom: 34px; }
+.foot-cols a:hover { text-decoration: underline wavy rgba(255, 214, 10, 0.85) 1.5px; text-underline-offset: 7px; }
 .foot-cols { position: relative; z-index: 6; display: flex; gap: clamp(40px, 6vw, 110px); justify-content: flex-end; padding-top: 12px; }
 .foot-cols > div { display: flex; flex-direction: column; gap: 13px; }
 .foot-col-title { color: #8f8e85; margin-bottom: 6px; }
@@ -407,7 +410,7 @@ h1, h2, h3, p { margin: 0; }
   /* sections stack; pins are disabled by JS */
   .marquee-pin { height: auto; min-height: 0; padding: 90px 5vw; display: block; }
   .marquee-track { position: relative; }
-  .marquee-sentence { white-space: normal; font-size: clamp(56px, 13vw, 110px); }
+  .marquee-sentence { text-shadow: 0 22px 44px rgba(10, 10, 10, 0.14); white-space: normal; font-size: clamp(56px, 13vw, 110px); }
   .book3d { margin: 60px auto 70px; }
   .noise-pin { height: auto; min-height: 0; padding: 90px 0 110px; }
   .noise-img { height: 100%; }
@@ -448,7 +451,7 @@ h1, h2, h3, p { margin: 0; }
   .case-name { font-size: clamp(38px, 10vw, 60px); }
   .case-stats { align-items: flex-start; margin-top: 14px; }
   .case-top { flex-direction: column; }
-  .dcard { width: 130px; }
+  .dcard { transition: translate 0.35s var(--ease); width: 130px; }
   .dcard p { font-size: 11px; padding: 12px; }
   .dc-5 { display: none; }
   .dc-1 { left: 0; } .dc-2 { left: 22%; } .dc-3 { left: 44%; } .dc-4 { left: 66%; }
@@ -461,7 +464,7 @@ h1, h2, h3, p { margin: 0; }
 
 @media (max-width: 390px) {
   .hero-h { font-size: 52px; }
-  .marquee-sentence { font-size: 52px; }
+  .marquee-sentence { text-shadow: 0 22px 44px rgba(10, 10, 10, 0.14); font-size: 52px; }
   .pstep h3 { font-size: 30px; }
 }
 

@@ -23,17 +23,16 @@ export default function Footer() {
         <div className="foot-cols">
           <div>
             <span className="micro foot-col-title">COMPANY</span>
-            <a href="#work">Case studies</a>
-            <a href="#process">Process</a>
-            <a href="#voices">Testimonials</a>
-            <a href="#about">About</a>
+            <a href="#work">Our expertise</a>
+            <a href="#process">Pricing</a>
+            <a href="#voices">Blog</a>
+            <a href="mailto:work@telesads.com">Contact us</a>
           </div>
           <div>
             <span className="micro foot-col-title">SOCIAL</span>
-            <a href={contact.telegram} target="_blank" rel="noopener noreferrer">Telegram</a>
-            <a href={`mailto:${contact.email}`}>Email</a>
-            <a href={contact.telegram} target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a href={contact.telegram} target="_blank" rel="noopener noreferrer">X</a>
+            <a href={contact.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href={contact.x} target="_blank" rel="noopener noreferrer">X</a>
+            <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </div>
         </div>
         <div className="foot-follow">

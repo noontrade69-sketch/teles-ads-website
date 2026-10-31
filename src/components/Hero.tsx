@@ -48,6 +48,7 @@ export default function Hero() {
         <FloatCards />
       </div>
 
+      <div className="hero-peek" aria-hidden="true">Careful steps.</div>
       <div className="hero-inner">
         <p className="eyebrow"><i className="eyebrow-dot" /> TELEGRAM ADVERTISING, REIMAGINED</p>
         <div className="hero-hwrap">

@@ -1,7 +1,7 @@
 "use client";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { ContactShadows, Environment, Lightformer } from "@react-three/drei";
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 
 /* Amber-glass TELES "T" chevron mark with a white-hot core on a thin metal
@@ -26,17 +26,26 @@ function GlassMark() {
     return s;
   }, []);
 
+  useEffect(() => {
+    const onMove = (e: PointerEvent) => {
+      mouse.current.x = (e.clientX / window.innerWidth) * 2 - 1;
+      mouse.current.y = (e.clientY / window.innerHeight) * 2 - 1;
+    };
+    window.addEventListener("pointermove", onMove);
+    return () => window.removeEventListener("pointermove", onMove);
+  }, []);
+
   useFrame((state, delta) => {
     const g = group.current;
     if (!g) return;
     const t = state.clock.elapsedTime;
-    g.rotation.y = Math.sin(t * 0.34) * 0.55 + mouse.current.x * 0.12;
+    g.rotation.y = Math.sin(t * 0.3) * 0.5 + mouse.current.x * 0.4;
     g.rotation.x = THREE.MathUtils.lerp(g.rotation.x, -0.08 + mouse.current.y * 0.12, 0.06);
     g.position.y = Math.sin(t * 0.9) * 0.07;
   });
 
   return (
-    <group ref={group}>
+    <group ref={group} scale={1.32}>
       {/* glass shell */}
       <mesh position={[0, 0.1, 0]}>
         <extrudeGeometry args={[shape, { depth: 0.34, bevelEnabled: true, bevelSegments: 4, bevelThickness: 0.07, bevelSize: 0.05, steps: 1, curveSegments: 8 }]} />
@@ -55,11 +64,11 @@ function GlassMark() {
         />
       </mesh>
       {/* white-hot core: glow sphere behind the glass */}
-      <mesh position={[0, 0.08, -0.5]}>
-        <sphereGeometry args={[0.3, 24, 24]} />
+      <mesh position={[0, 0.08, -0.26]}>
+        <sphereGeometry args={[0.34, 24, 24]} />
         <meshBasicMaterial color="#fff6e2" toneMapped={false} />
       </mesh>
-      <pointLight position={[0, 0.1, -0.9]} intensity={16} color="#ffd28a" />
+      <pointLight position={[0, 0.1, -0.4]} intensity={30} color="#ffd28a" />
     </group>
   );
 }

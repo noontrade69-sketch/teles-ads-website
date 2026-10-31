@@ -9,6 +9,9 @@ export const contact = {
   telegram: "https://t.me/TelesAds",
   email: "work@telesads.com",
   book: "mailto:work@telesads.com?subject=Book%20a%20call%20%E2%80%94%20TELES%20ADS",
+  instagram: "https://instagram.com/telesads",
+  x: "https://x.com/telesads",
+  linkedin: "https://linkedin.com/company/telesads",
 };
 
 export const nav = [
