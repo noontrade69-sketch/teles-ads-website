@@ -147,7 +147,7 @@ h1, h2, h3, p { margin: 0; }
 .rip-b { top: 44%; transform: rotate(5deg); clip-path: polygon(0 30%, 10% 0, 26% 40%, 44% 6%, 60% 44%, 76% 8%, 90% 42%, 100% 12%, 100% 100%, 0 100%); box-shadow: 0 4px 10px rgba(0,0,0,.14); }
 .rip-c { top: 74%; transform: rotate(-3deg); clip-path: polygon(0 0, 14% 60%, 30% 10%, 48% 64%, 64% 14%, 82% 58%, 100% 20%, 100% 100%, 0 100%); }
 .rip-tag { position: absolute; right: 10px; bottom: 10px; font-family: var(--font-tape), "Anton", sans-serif; font-size: 12px; background: var(--ink); color: var(--yellow); padding: 3px 8px; border-radius: 4px; transform: rotate(-6deg); }
-.fc-edge small { color: #f3f2ec; }
+.fc-edge small { color: #1d1c18; background: rgba(255,255,255,0.82); padding: 2px 6px; border-radius: 4px; }
 .fc-art { width: 74%; height: auto; align-self: center; flex: 1; min-height: 0; }
 .fc-art-wide { width: 100%; }
 .fc-torn { position: absolute; inset: 0; background: repeating-linear-gradient(115deg, rgba(10, 10, 10, 0.05) 0 3px, transparent 3px 14px); clip-path: polygon(0 0, 100% 0, 100% 78%, 62% 100%, 0 84%); }
