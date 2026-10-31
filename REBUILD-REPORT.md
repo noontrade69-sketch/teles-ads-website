@@ -18,19 +18,16 @@ founder, verified 3× against the PDF before finishing.
 | 5 | — | Marquee sentence + 3D spinning book showing "$18 CAC" / "Optimization." faces | s03–s04 |
 | 6 | — | Crowd photo + gold figure + floating logomark + rising slabs | s06–s07 |
 | 7 | Case grid | Pinned horizontal 3-panel track w/ stat pills + fanned creative decks + scatter/glitch exit | s08–s11 |
-| 8 | — | Amber-glass 3D "T" on pedestal w/ glow bloom | s09 |
+| 8 | — | Large amber-glass 3D "T" on pedestal, pointer-follow sway, glow bloom + flash | s09 |
 | 9 | — | Hand-drawn yellow ribbon that draws itself, 4 numbered steps, counter-scrolling edge tapes | s12–s14 |
 | 10 | Plain quote cards | Ink folder shells, glossy yellow flaps, paper quotes, bookmark tabs, verified ticks | s15–s16 |
-| 11 | — | Charcoal footer, "Let's see…" CTA, falling tape pile (bounce.out), rotated credit | s17 |
+| 11 | — | Charcoal footer, "Let's see…" CTA, PDF-exact link columns, falling tape pile (bounce.out), rotated credit | s17 |
 | 12 | Brand gaps | TELES ADS everywhere, zero "Wikala" hits, founder named in JSON-LD + hero note + credit | User requirement |
 | 13 | Unmeasured | Lighthouse 83–100/100/96/100, axe 0 violations, 0 overflow, 3 verify passes | Spec checklist |
 
 ## Deliberate deviations (and why)
 - **Loader runs 1.5 s**, not the ~2.5–3 s in the reference video: snappier first
   paint; the reference length includes network load, not pure theater.
-- **Footer columns**: COMPANY (Case studies/Process/Testimonials/About) + SOCIAL
-  (Telegram/Email/Instagram/X) — the reference footer's labels are illegible in
-  the screenshots; anchored links chosen to fit a one-page site.
 - **Testimonials & case metrics are placeholders** — the PDF itself notes they
   are placeholders; a visible "sample layout" disclaimer ships until real
   client stories are approved.
@@ -45,9 +42,10 @@ founder, verified 3× against the PDF before finishing.
 5. Stat pills identical across all three case panels (matches the ref stills).
 6. Telegram link → `t.me/TelesAds` placeholder handle.
 7. Book's second face copy ("Optimization.") inferred from the blur in s04.
-8. Footer social order & credit line ("© Designed by Shah Tosif").
+8. Footer COMPANY/SOCIAL link targets are placeholders (labels now PDF-exact:
+   Our expertise/Pricing/Blog/Contact us + Instagram/X/LinkedIn).
 9. Process ribbon exact curve is hand-tuned to match the ref's sweep, not traced.
-10. Loader duration (above) and badge rotation speed.
+10. Badge rotation speed; loader length tuned to the spec's ~2.4 s (was 1.5 s in v1).
 
 ## Verification evidence
 - Desktop rounds: `teles-studio-qa/r1/`, `r2/`, `r3/` (18 frames each, 1440×900)

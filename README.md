@@ -47,12 +47,12 @@ Overwrite `testimonials[]` in `data.ts` and remove the `.folders-note` line in
 
 | Section | Pin length | What happens |
 |---|---|---|
-| Preloader | 1.5 s | % counter → curtain lift (skipped if `sessionStorage.teles-intro-seen`) |
-| Hero | +100 % | headline mask-reveal, float cards parallax out, bust scales |
+| Preloader | 2.4 s | tape ribbons curl in, % counter, 0.4s fade + 0.3s blank → hero (skipped if `sessionStorage.teles-intro-seen`) |
+| Hero | +100 % | headline mask-reveal + ghost echo trail, float cards drift up-left, bust scales/sinks, next-section giant text peeks in |
 | Marquee | +300 % | sentence slides, 3D book does a full spin to its "$18 CAC" face |
 | Stand out (crowd) | +170 % | slow zoom, headline mask-reveal, slabs rise into cases |
 | Case studies | +280 % | horizontal track, deck parallax per panel, scatter burst at exit |
-| Logo reveal | +140 % | 3D amber-glass T on pedestal, glow bloom + soft flash |
+| Logo reveal | +140 % | large amber-glass 3D T on pedestal, sway + pointer follow, glow bloom + flash |
 | Process | +300 % | ribbon draws itself, numbered nodes activate, side tapes counter-scroll |
 | Testimonials | in-view | folder shells rise, flaps open (all viewports, no pin) |
 | Footer | in-view | CTA reveal, tape pile drops in with `bounce.out`, cursor-push on tapes |
