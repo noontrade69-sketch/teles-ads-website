@@ -326,6 +326,7 @@ h1, h2, h3, p { margin: 0; }
 .logo-fallback { width: clamp(240px, 36vh, 400px); height: auto; border-radius: 20px; transition: opacity 0.5s; }
 .logo-pin:has(.logo-canvas) .logo-fallback { opacity: 0; }
 .logo-canvas { position: absolute; inset: 0; }
+.logo-bloom { position: absolute; left: 50%; top: 46%; width: 52vh; height: 52vh; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.96) 0%, rgba(255,228,170,0.6) 32%, rgba(255,228,170,0) 70%); mix-blend-mode: screen; pointer-events: none; opacity: 0.75; will-change: transform, opacity; }
 .logo-flash { position: absolute; inset: 0; background: #F4F5F7; opacity: 0; pointer-events: none; }
 
 /* ============================================================

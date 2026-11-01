@@ -33,6 +33,7 @@ export default function LogoReveal() {
         <div className="logo-glow" aria-hidden="true" />
         <Image className="logo-fallback" src="/images/logo-glass.png" alt="" width={520} height={520} priority={false} />
         {active && <Scene />}
+        <div className="logo-bloom" aria-hidden="true" />
         <div className="logo-flash" aria-hidden="true" />
       </div>
     </section>

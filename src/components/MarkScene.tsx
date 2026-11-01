@@ -47,44 +47,46 @@ function GlassMark() {
   });
 
   return (
-    <group ref={group} scale={0.62}>
+    <group ref={group} scale={1.02}>
       {/* amber glass shell */}
       <mesh position={[0, 0.1, 0]}>
         <extrudeGeometry args={[shape, { depth: 0.3, bevelEnabled: true, bevelSegments: 3, bevelThickness: 0.06, bevelSize: 0.05, steps: 1, curveSegments: 6 }]} />
         <meshPhysicalMaterial
-          color="#f2b13d"
-          transmission={0.68}
-          thickness={1.2}
-          roughness={0.14}
+          color="#ffc95e"
+          transmission={0.85}
+          thickness={1.6}
+          roughness={0.05}
           ior={1.4}
           metalness={0}
+          emissive="#7a4a08"
+          emissiveIntensity={0.55}
           clearcoat={1}
-          clearcoatRoughness={0.12}
-          attenuationColor="#b45309"
-          attenuationDistance={1.3}
-          envMapIntensity={1.5}
+          clearcoatRoughness={0.08}
+          attenuationColor="#e08900"
+          attenuationDistance={2.4}
+          envMapIntensity={3.2}
         />
       </mesh>
       {/* white-hot emissive core inside the glass */}
       <mesh position={[0, 0.08, 0.1]}>
-        <sphereGeometry args={[0.3, 24, 24]} />
-        <meshBasicMaterial color="#fff8ea" toneMapped={false} />
+        <sphereGeometry args={[0.44, 24, 24]} />
+        <meshBasicMaterial color="#ffffff" toneMapped={false} />
       </mesh>
-      <pointLight position={[0, 0.1, 0.3]} intensity={16} color="#ffdf9e" />
+      <pointLight position={[0, 0.1, 0.3]} intensity={44} color="#ffe2a8" />
     </group>
   );
 }
 
 function Stand() {
   return (
-    <group position={[0, -1.06, 0]}>
-      <mesh position={[0, 0.22, 0]} rotation={[0, 0, 0.06]}>
-        <boxGeometry args={[0.15, 0.95, 0.13]} />
-        <meshStandardMaterial color="#6f695d" metalness={1} roughness={0.3} envMapIntensity={1.1} />
+    <group position={[0, -1.1, 0]}>
+      <mesh position={[-0.03, 0.24, -0.32]} rotation={[0, 0, 0.1]}>
+        <boxGeometry args={[0.13, 1.1, 0.12]} />
+        <meshStandardMaterial color="#a89e8c" metalness={1} roughness={0.22} envMapIntensity={1.5} />
       </mesh>
       <mesh position={[0.06, -0.24, 0.05]} rotation={[0.38, 0.18, -0.1]}>
-        <boxGeometry args={[0.78, 0.055, 0.5]} />
-        <meshStandardMaterial color="#8f8a80" metalness={1} roughness={0.24} envMapIntensity={1.25} />
+        <boxGeometry args={[1.0, 0.06, 0.62]} />
+        <meshStandardMaterial color="#cfc6b4" metalness={1} roughness={0.16} envMapIntensity={1.8} />
       </mesh>
       {/* soft elliptical floor highlight */}
       <mesh position={[0, -0.29, 0.1]} rotation={[-Math.PI / 2, 0, 0]}>

@@ -202,6 +202,7 @@ const sent = document.querySelector<HTMLElement>(".marquee-sentence");
             scrollTrigger: { trigger: ".logo", start: "top top", end: "+=140%", scrub: 0.8, pin: true, anticipatePin: 1 },
           });
           lg.fromTo(".logo-glow", { scale: 0.8, opacity: 0.7 }, { scale: 1.6, opacity: 1, ease: "none" }, 0)
+            .fromTo(".logo-bloom", { scale: 0.55, opacity: 0.5 }, { scale: 1.55, opacity: 0.95, ease: "none" }, 0)
             .fromTo(".logo-flash", { opacity: 0 }, { opacity: 1, ease: "none", duration: 0.12 }, 0.86);
 
           /* ---------- 6 · PROCESS pin: ribbon draw + node activation ---------- */
