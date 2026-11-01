@@ -281,11 +281,11 @@ h1, h2, h3, p { margin: 0; }
 .dc-2 span { display: none; }
 .dcard strong.dc-big { font-family: var(--font-tape), "Anton", sans-serif; font-weight: 400; font-size: clamp(64px, 6.5vw, 120px); }
 .dcard img { width: 100%; height: 100%; object-fit: cover; }
-.dc-1 { left: 0%; bottom: 3%; z-index: 1; background: #101010; transform: rotateY(-18deg) translateZ(-150px); }
-.dc-2 { left: 16%; bottom: 7%; z-index: 2; transform: rotateY(-18deg) translateZ(-105px); }
-.dc-3 { left: 32%; bottom: 11%; z-index: 3; background: var(--ink); transform: rotateY(-18deg) translateZ(-60px); }
-.dc-4 { left: 48%; bottom: 15%; z-index: 4; display: grid; place-items: center; transform: rotateY(-18deg) translateZ(-20px); }
-.dc-5 { left: 64%; bottom: 19%; z-index: 5; background: var(--orange); transform: rotateY(-18deg) translateZ(0); }
+.dc-1 { left: 0%; bottom: 3%; z-index: 1; background: #101010; transform: rotateY(-18deg) translateZ(-150px) scale(0.8); }
+.dc-2 { left: 16%; bottom: 7%; z-index: 2; transform: rotateY(-18deg) translateZ(-105px) scale(0.87); }
+.dc-3 { left: 32%; bottom: 11%; z-index: 3; background: var(--ink); transform: rotateY(-18deg) translateZ(-60px) scale(0.93); }
+.dc-4 { left: 48%; bottom: 15%; z-index: 4; display: grid; place-items: center; transform: rotateY(-18deg) translateZ(-20px) scale(0.97); }
+.dc-5 { left: 64%; bottom: 19%; z-index: 5; background: var(--orange); transform: rotateY(-18deg) translateZ(0) scale(1.05); }
 .case-yellow .dc-4 { background: radial-gradient(120% 100% at 25% 5%, #ffe95e, var(--yellow) 60%, #ecb600); color: var(--ink); }
 .case-orange .dc-4 { background: radial-gradient(120% 100% at 25% 5%, #ff7a33, var(--orange) 60%, #b83104); color: #fff; }
 .case-red .dc-4 { background: radial-gradient(120% 100% at 25% 5%, #ff3423, var(--red) 60%, #930300); color: #fff; }
@@ -326,7 +326,7 @@ h1, h2, h3, p { margin: 0; }
 .logo-fallback { width: clamp(240px, 36vh, 400px); height: auto; border-radius: 20px; transition: opacity 0.5s; }
 .logo-pin:has(.logo-canvas) .logo-fallback { opacity: 0; }
 .logo-canvas { position: absolute; inset: 0; }
-.logo-flash { position: absolute; inset: 0; background: #fff7e6; opacity: 0; pointer-events: none; }
+.logo-flash { position: absolute; inset: 0; background: #F4F5F7; opacity: 0; pointer-events: none; }
 
 /* ============================================================
    6 · PROCESS
