@@ -53,7 +53,7 @@ export default function Cases() {
           <div className="scard sc-photo">
             <div className="glitch g-r" />
             <div className="glitch g-c" />
-            <Image src="/images/poster-art.webp" alt="" fill sizes="40vw" className="dphoto" />
+            <Image src="/images/foliage.jpg" alt="" fill sizes="40vw" className="dphoto" />
           </div>
           <div className="scard sc-julytab"><span>JULY</span></div>
           <div className="scard sc-app"><b>▲</b></div>

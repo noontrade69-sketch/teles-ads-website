@@ -245,9 +245,9 @@ h1, h2, h3, p { margin: 0; }
 .noise-aside { position: absolute; z-index: 3; right: 3.8vw; top: 10vh; max-width: 320px; color: #e8e8e2; font-size: 13.5px; line-height: 1.75; text-align: right; }
 .noise-aside b { display: block; color: #fff; margin-bottom: 6px; }
 .noise-aside p::first-line { font-weight: 700; }
-.slab { position: absolute; z-index: 4; bottom: 0; height: 100%; width: 58%; transform: translateY(115%); will-change: transform; }
+.slab { position: absolute; z-index: 4; bottom: 0; height: 130%; width: 58%; transform: translateY(115%); will-change: transform; }
 .slab-yellow { left: 0; background: linear-gradient(180deg, var(--yellow-hi), var(--yellow)); }
-.slab-orange { right: 0; width: 40%; background: linear-gradient(200deg, #ff5e1f, var(--orange) 55%, #c23a08); }
+.slab-orange { right: 0; width: 42%; background: linear-gradient(200deg, #ff5e1f, var(--orange) 55%, #c23a08); }
 
 /* ============================================================
    4 · CASES (horizontal) + scatter
@@ -268,9 +268,9 @@ h1, h2, h3, p { margin: 0; }
 .case-yellow .stat-pill { background: rgba(255, 255, 255, 0.4); color: var(--ink); border-color: rgba(10, 10, 10, 0.18); }
 .case-disc { position: absolute; left: 4vw; bottom: 18px; opacity: 0.6; color: inherit; }
 .case-yellow .case-disc { color: var(--ink); }
-.deck { position: absolute; left: 4vw; right: 4vw; bottom: -6%; height: 58%; perspective: 1200px; transform-style: preserve-3d; }
+.deck { position: absolute; left: 2vw; right: 2vw; bottom: -7%; height: 60%; perspective: 1300px; transform-style: preserve-3d; }
 .dcard {
-  position: absolute; bottom: 0; width: clamp(240px, 29vw, 420px); aspect-ratio: 3 / 3.9;
+  position: absolute; bottom: 0; width: clamp(320px, 44vw, 660px); aspect-ratio: 3 / 3.9;
   border-radius: 20px; border: 2px solid rgba(255, 255, 255, 0.94); overflow: hidden;
   box-shadow: 0 36px 70px rgba(0, 0, 0, 0.32); background: #fff;
   transform: rotateY(-18deg); transition: translate 0.3s var(--ease);
@@ -281,17 +281,17 @@ h1, h2, h3, p { margin: 0; }
 .dc-2 span { display: none; }
 .dcard strong.dc-big { font-family: var(--font-tape), "Anton", sans-serif; font-weight: 400; font-size: clamp(64px, 6.5vw, 120px); }
 .dcard img { width: 100%; height: 100%; object-fit: cover; }
-.dc-1 { left: 0%; bottom: 3%; z-index: 1; background: #101010; transform: rotateY(-18deg) translateZ(-150px) scale(0.8); }
-.dc-2 { left: 16%; bottom: 7%; z-index: 2; transform: rotateY(-18deg) translateZ(-105px) scale(0.87); }
-.dc-3 { left: 32%; bottom: 11%; z-index: 3; background: var(--ink); transform: rotateY(-18deg) translateZ(-60px) scale(0.93); }
-.dc-4 { left: 48%; bottom: 15%; z-index: 4; display: grid; place-items: center; transform: rotateY(-18deg) translateZ(-20px) scale(0.97); }
-.dc-5 { left: 64%; bottom: 19%; z-index: 5; background: var(--orange); transform: rotateY(-18deg) translateZ(0) scale(1.05); }
+.dc-1 { left: 0%; bottom: 2%; z-index: 1; background: #101010; transform: rotateY(-18deg) translateZ(-150px) scale(0.7); }
+.dc-2 { left: 8%; bottom: 5%; z-index: 2; transform: rotateY(-18deg) translateZ(-105px) scale(0.78); }
+.dc-3 { left: 16%; bottom: 8%; z-index: 3; background: var(--ink); transform: rotateY(-18deg) translateZ(-60px) scale(0.85); }
+.dc-4 { left: 24%; bottom: 11%; z-index: 4; display: grid; place-items: center; transform: rotateY(-18deg) translateZ(-20px) scale(0.92); }
+.dc-5 { left: 32%; bottom: 14%; z-index: 5; background: var(--orange); transform: rotateY(-18deg) translateZ(0) scale(1); }
 .case-yellow .dc-4 { background: radial-gradient(120% 100% at 25% 5%, #ffe95e, var(--yellow) 60%, #ecb600); color: var(--ink); }
 .case-orange .dc-4 { background: radial-gradient(120% 100% at 25% 5%, #ff7a33, var(--orange) 60%, #b83104); color: #fff; }
 .case-red .dc-4 { background: radial-gradient(120% 100% at 25% 5%, #ff3423, var(--red) 60%, #930300); color: #fff; }
 
 .scatter { position: absolute; inset: 0; background: var(--charcoal); opacity: 0; pointer-events: none; }
-.scard { position: absolute; left: 50%; top: 50%; width: clamp(170px, 19vw, 300px); aspect-ratio: 3 / 3.8; border-radius: 18px; overflow: hidden; box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5); }
+.scard { position: absolute; left: 50%; top: 50%; width: clamp(160px, 15vw, 260px); aspect-ratio: 3 / 3.8; border-radius: 18px; overflow: hidden; box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5); }
 .scard span { font-size: clamp(24px, 2.2vw, 38px); }
 .scard span { position: absolute; inset: auto 14px 14px; font-family: var(--font-tape), "Anton", sans-serif; color: #fff; text-transform: uppercase; }
 .sc-1 { background: linear-gradient(160deg, #ffb199, #ff4d13 70%); }
@@ -300,9 +300,9 @@ h1, h2, h3, p { margin: 0; }
 .sc-3 { background: var(--yellow); }
 .sc-3 span { color: var(--ink); writing-mode: vertical-rl; }
 .sc-4 { background: var(--red); }
-.sc-photo { width: clamp(260px, 24vw, 430px); }
+.sc-photo { width: clamp(300px, 28vw, 540px); height: 45vh; aspect-ratio: auto; }
 .sc-photo .dphoto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.glitch { position: absolute; inset: 0; background-image: url("/images/poster-art.webp"); background-size: cover; mix-blend-mode: screen; pointer-events: none; }
+.glitch { position: absolute; inset: 0; background-image: url("/images/foliage.jpg"); background-size: cover; mix-blend-mode: screen; pointer-events: none; }
 .g-r { filter: sepia(1) saturate(9) hue-rotate(-45deg) brightness(0.9); animation: rgbsplitR 0.42s steps(2) infinite; }
 .g-c { filter: sepia(1) saturate(9) hue-rotate(140deg) brightness(0.9); animation: rgbsplitC 0.36s steps(2) infinite; }
 @keyframes rgbsplitR { 0% { transform: translateX(-2.5%) scaleX(1.06); opacity: 0.55; } 50% { transform: translateX(-6%) scaleX(1.28); opacity: 0.75; } 100% { transform: translateX(-3.5%) scaleX(1.1); opacity: 0.6; } }
@@ -320,14 +320,12 @@ h1, h2, h3, p { margin: 0; }
 /* ============================================================
    5 · LOGO REVEAL
    ============================================================ */
-.logo { position: relative; background: #141310; }
-.logo-pin { position: relative; height: 100svh; min-height: 680px; overflow: hidden; display: grid; place-items: center; background: radial-gradient(120% 90% at 50% 46%, #3d3220 0%, #242219 42%, #11100d 100%); }
-.logo-glow { position: absolute; inset: 0; background: radial-gradient(circle at 50% 46%, rgba(255, 176, 40, 0.34), rgba(34, 34, 31, 0) 58%); will-change: transform; }
-.logo-fallback { width: clamp(240px, 36vh, 400px); height: auto; border-radius: 20px; transition: opacity 0.5s; }
-.logo-pin:has(.logo-canvas) .logo-fallback { opacity: 0; }
-.logo-canvas { position: absolute; inset: 0; }
-.logo-bloom { position: absolute; left: 50%; top: 46%; width: 52vh; height: 52vh; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.96) 0%, rgba(255,228,170,0.6) 32%, rgba(255,228,170,0) 70%); mix-blend-mode: screen; pointer-events: none; opacity: 0.75; will-change: transform, opacity; }
-.logo-flash { position: absolute; inset: 0; background: #F4F5F7; opacity: 0; pointer-events: none; }
+.logo { position: relative; background: #2B2B22; }
+.logo-pin { position: relative; height: 100svh; min-height: 680px; overflow: hidden; display: grid; place-items: center; background: #2B2B22; }
+.logo-glow { position: absolute; inset: 0; background: radial-gradient(circle at 50% 44%, rgba(255, 183, 26, 0.3), rgba(43, 43, 34, 0) 60%); will-change: transform, opacity; animation: glowPulse 3.2s ease-in-out infinite alternate; }
+@keyframes glowPulse { from { opacity: 0.72; } to { opacity: 1; } }
+.logo-emblem { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform, translate; }
+.logo-flash { position: absolute; inset: 0; background: radial-gradient(circle at 50% 37%, #F4F5F7 0%, #F4F5F7 55%, rgba(244, 245, 247, 0) 72%); opacity: 0; pointer-events: none; will-change: transform, opacity; transform-origin: 50% 37%; }
 
 /* ============================================================
    6 · PROCESS

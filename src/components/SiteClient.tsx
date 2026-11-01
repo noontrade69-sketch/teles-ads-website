@@ -171,8 +171,10 @@ const sent = document.querySelector<HTMLElement>(".marquee-sentence");
             scrollTrigger: { trigger: ".noise", start: "top top", end: "+=100%", scrub: 0.5, pin: true, anticipatePin: 1 },
           });
           nz.fromTo(".noise-img", { scale: 1, yPercent: 0 }, { scale: 1.2, yPercent: -6, ease: "none" }, 0)
-            .to(".slab-yellow", { yPercent: 0, ease: "none", duration: 0.5 }, 0.5)
-            .to(".slab-orange", { yPercent: 0, ease: "none", duration: 0.5 }, 0.56);
+            /* GSAP 3.15 parses CSS translateY(%) into a px y-component, so .to(yPercent:0) is a
+               silent no-op — set BOTH y:0 and yPercent explicitly via fromTo (verified in isolation). */
+            .fromTo(".slab-yellow", { yPercent: 115, y: 0 }, { yPercent: 0, y: 0, ease: "none", duration: 0.48 }, 0.42)
+            .fromTo(".slab-orange", { yPercent: 115, y: 0 }, { yPercent: 0, y: 0, ease: "none", duration: 0.48 }, 0.47);
 
           /* ---------- 4 · CASES pin: horizontal + deck parallax + scatter ---------- */
           const track = document.querySelector<HTMLElement>(".cases-track");
@@ -201,9 +203,9 @@ const sent = document.querySelector<HTMLElement>(".marquee-sentence");
           const lg = gsap.timeline({
             scrollTrigger: { trigger: ".logo", start: "top top", end: "+=140%", scrub: 0.8, pin: true, anticipatePin: 1 },
           });
-          lg.fromTo(".logo-glow", { scale: 0.8, opacity: 0.7 }, { scale: 1.6, opacity: 1, ease: "none" }, 0)
-            .fromTo(".logo-bloom", { scale: 0.55, opacity: 0.5 }, { scale: 1.55, opacity: 0.95, ease: "none" }, 0)
-            .fromTo(".logo-flash", { opacity: 0 }, { opacity: 1, ease: "none", duration: 0.12 }, 0.86);
+          lg.fromTo(".logo-glow", { scale: 0.8, opacity: 0.55 }, { scale: 1.5, opacity: 0.95, ease: "none" }, 0)
+            .fromTo(".logo-emblem", { scale: 0.9 }, { scale: 1, ease: "none" }, 0)
+            .fromTo(".logo-flash", { scale: 0.15, opacity: 0 }, { scale: 3.4, opacity: 1, ease: "power2.in", duration: 0.15 }, 0.85);
 
           /* ---------- 6 · PROCESS pin: ribbon draw + node activation ---------- */
           const rope = document.querySelector<SVGPathElement>(".ribbon-draw");

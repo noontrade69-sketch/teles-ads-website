@@ -1,5 +1,18 @@
 # Changelog — fix report (Fix-Report-and-Prompt.pdf), verified at 1920×1080, 1440×810, 390×844
 
+## Round 2 review (Round2-Review-and-Prompt.pdf / fix-prompt-2.txt) — verified 1440×810 + 390×844
+
+| # | Item | Status | Evidence / notes |
+|---|------|--------|------------------|
+| 1 | Hero bust regression — restore classical tape bust | **Fixed** | hero-cut.png on hero + $18 CAC marquee card (same image both places). The regression had already been rolled back at round-8 start; re-verified, nothing changed this round. r9/item1-hero.png vs r8/m-hero.png |
+| 2 | Delete 3D "T" → pre-rendered emblem + GSAP/CSS only | **Fixed (placeholder)** | MarkScene.tsx (WebGL) deleted — page loads with zero WebGL. New LogoReveal.tsx renders logo-emblem.png (generated PLACEHOLDER — owner to swap final asset at /public/images/logo-emblem.png) with ScrollTrigger scale 0.9→1, glowPulse, pointer parallax; flash is pure #F4F5F7 radial growing from the core; process starts only after flash on #F4F5F7 (no cream). Emblem ~39vw/73vh placeholder, no T, no flat circle, no pedestal. r9/item2-logo/-flash/-after-flash.png |
+| 3 | Case decks too empty | **Fixed** | Front card clamp(320px,44vw,660px) ≈45% of panel width, deck band 60% of panel height, 8%/step stack shifts, white 2px outlines + rotateY(-18°) kept; labels/pills untouched. r9/item3-deck.png |
+| 4 | Card scatter too small/sparse | **Fixed** | Foliage glitch card 28vw×45vh (pixel-stretch + RGB-split kept), five 15vw cards, vertical JULY tab kept, converge to center before logo scene preserved. r9/item4-scatter.png |
+| 5 | Crowd→case transition slabs | **Fixed** | Flat yellow (58%) + orange (42%) slabs rise from bottom at 42%/47% of the crowd pin, meet flush with zero seam, become the first case panels. Found + fixed GSAP 3.15 bug: CSS translateY(%) parse makes .to(yPercent) a no-op — fromTo with explicit y:0. r9/item5-slabs*.png |
+| 6 | Verify preloader / mobile / perf | **Done** | Preloader untouched (tape ribbons, % counter, cross-fade). 390×844: overflow 0px, no console errors. axe: 0 new violations (1 pre-existing 4.18:1 contrast on process subtitle, present on live r8 too). Lighthouse desktop P97/A96/BP96/SEO100 (observed LCP 372ms; A96 is the same contrast item). lighthouse-r9.json, r9-mobile/ |
+
+---
+
 | # | Item | Status | Evidence / notes |
 |---|------|--------|------------------|
 | 1 | Big 3D "T" scene removed → logo animation | **Fixed** | R3F scene rebuilt: small amber-glass logomark (~38vh max), thin metal stand + floor highlight, emissive white core, ±15° Y sway + cursor parallax, amber/gold only, no red. End flash is pure #F4F5F7 white (was cream). PNG fallback of the same object for low-end devices. Verified r5/01-logo-1440.png |
