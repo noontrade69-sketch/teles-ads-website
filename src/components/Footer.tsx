@@ -63,6 +63,10 @@ export default function Footer() {
         <Tape className="tp tp-4" repeat={5} />
         <Tape className="tp tp-5" repeat={5} />
         <Tape className="tp tp-6" repeat={5} />
+        <Tape className="tp tp-7" repeat={5} />
+        <Tape className="tp tp-8" repeat={5} />
+        <Tape className="tp tp-9" repeat={5} />
+        <Tape className="tp tp-10" repeat={5} />
       </div>
     </footer>
   );

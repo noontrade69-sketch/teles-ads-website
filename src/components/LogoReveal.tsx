@@ -34,7 +34,7 @@ export default function LogoReveal() {
       <div className="logo-pin" ref={ref}>
         <div className="logo-glow" aria-hidden="true" />
         {/* PLACEHOLDER emblem — owner to supply final pre-rendered asset */}
-        <Image className="logo-emblem" src="/images/logo-emblem.png" alt="" fill sizes="100vw" priority={false} />
+        <Image className="logo-emblem" src="/images/logo-emblem.png?v=2" alt="" fill sizes="100vw" priority={false} />
         <div className="logo-flash" aria-hidden="true" />
       </div>
     </section>

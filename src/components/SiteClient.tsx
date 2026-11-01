@@ -164,17 +164,17 @@ const sent = document.querySelector<HTMLElement>(".marquee-sentence");
           if (sent) {
             mq.fromTo(sent, { x: 0 }, { x: () => Math.min(0, innerWidth - sent.scrollWidth - 48), ease: "none" }, 0);
           }
-          mq.fromTo(".book-rot", { rotationY: -32 }, { rotationY: 208, ease: "none" }, 0);
+          mq.fromTo(".book-rot", { rotationY: -14 }, { rotationY: 206, ease: "power1.inOut", duration: 0.42 }, 0.58);
 
           /* ---------- 3 · NOISE pin: zoom + slabs rise ---------- */
           const nz = gsap.timeline({
             scrollTrigger: { trigger: ".noise", start: "top top", end: "+=100%", scrub: 0.5, pin: true, anticipatePin: 1 },
           });
-          nz.fromTo(".noise-img", { scale: 1, yPercent: 0 }, { scale: 1.2, yPercent: -6, ease: "none" }, 0)
+          nz.fromTo(".noise-img", { scale: 1, yPercent: 0 }, { scale: 2.35, yPercent: 13, ease: "power1.in", duration: 0.72 }, 0)
             /* GSAP 3.15 parses CSS translateY(%) into a px y-component, so .to(yPercent:0) is a
                silent no-op — set BOTH y:0 and yPercent explicitly via fromTo (verified in isolation). */
-            .fromTo(".slab-yellow", { yPercent: 115, y: 0 }, { yPercent: 0, y: 0, ease: "none", duration: 0.48 }, 0.42)
-            .fromTo(".slab-orange", { yPercent: 115, y: 0 }, { yPercent: 0, y: 0, ease: "none", duration: 0.48 }, 0.47);
+            .fromTo(".slab-yellow", { yPercent: 115, y: 0 }, { yPercent: 0, y: 0, ease: "none", duration: 0.24 }, 0.72)
+            .fromTo(".slab-orange", { yPercent: 115, y: 0 }, { yPercent: 0, y: 0, ease: "none", duration: 0.22 }, 0.78);
 
           /* ---------- 4 · CASES pin: horizontal + deck parallax + scatter ---------- */
           const track = document.querySelector<HTMLElement>(".cases-track");
@@ -187,11 +187,11 @@ const sent = document.querySelector<HTMLElement>(".marquee-sentence");
               .to(".scatter", { opacity: 1, ease: "none", duration: 0.02 }, 0.62)
               .fromTo(".sc-photo", { x: 0, scale: 0.4, opacity: 0 }, { x: "4vw", scale: 1, opacity: 1, ease: "none", duration: 0.3 }, 0.64)
               .fromTo(".sc-julytab", { yPercent: 60, opacity: 0 }, { yPercent: 0, opacity: 1, ease: "none", duration: 0.26 }, 0.64)
-              .fromTo(".sc-app", { x: 0, scale: 0.4, opacity: 0 }, { x: "26vw", y: "18vh", scale: 1, opacity: 1, ease: "none", duration: 0.26 }, 0.66)
-              .fromTo(".sc-1", { x: 0, y: 0, scale: 0.5, opacity: 0 }, { x: "-21vw", y: "-17vh", scale: 1, opacity: 1, ease: "none", duration: 0.28 }, 0.64)
-              .fromTo(".sc-2", { x: 0, y: 0, scale: 0.4, opacity: 0 }, { x: "-9vw", y: "-21vh", scale: 1, opacity: 1, ease: "none", duration: 0.28 }, 0.66)
-              .fromTo(".sc-3", { x: 0, y: 0, scale: 0.5, opacity: 0 }, { x: "19vw", y: "-15vh", scale: 1, opacity: 1, ease: "none", duration: 0.28 }, 0.66)
-              .fromTo(".sc-4", { x: 0, y: 0, scale: 0.4, opacity: 0 }, { x: "-24vw", y: "19vh", scale: 1, opacity: 1, ease: "none", duration: 0.28 }, 0.68)
+              .fromTo(".sc-app", { x: 0, scale: 0.4, opacity: 0 }, { x: "31vw", y: "22vh", scale: 1, opacity: 1, ease: "none", duration: 0.26 }, 0.66)
+              .fromTo(".sc-1", { x: 0, y: 0, scale: 0.5, opacity: 0 }, { x: "-30vw", y: "-24vh", scale: 1, opacity: 1, ease: "none", duration: 0.28 }, 0.64)
+              .fromTo(".sc-2", { x: 0, y: 0, scale: 0.4, opacity: 0 }, { x: "-15vw", y: "-28vh", scale: 1, opacity: 1, ease: "none", duration: 0.28 }, 0.66)
+              .fromTo(".sc-3", { x: 0, y: 0, scale: 0.5, opacity: 0 }, { x: "27vw", y: "-20vh", scale: 1, opacity: 1, ease: "none", duration: 0.28 }, 0.66)
+              .fromTo(".sc-4", { x: 0, y: 0, scale: 0.4, opacity: 0 }, { x: "-32vw", y: "24vh", scale: 1, opacity: 1, ease: "none", duration: 0.28 }, 0.68)
               .fromTo(".glitch", { opacity: 0.9 }, { opacity: 0.4, ease: "none", duration: 0.3 }, 0.7)
               .to(".scard", { xPercent: -4, scale: 0.94, ease: "none", duration: 0.14 }, 0.86);
             gsap.utils.toArray<HTMLElement>(".deck").forEach((deck, i) => {
@@ -262,81 +262,20 @@ const sent = document.querySelector<HTMLElement>(".marquee-sentence");
           if (flap) tl.fromTo(flap, { rotateX: 8 }, { rotateX: 0, duration: 0.8, transformPerspective: 800, ease: "power3.out" }, 0.05);
         });
 
-        /* ---------- 8 · FOOTER tape pile: fall, settle, cursor push ---------- */
+        /* ---------- 8 · FOOTER tape pile: staggered drop, crossed pile (matches ref) ---------- */
         const pile = document.querySelector<HTMLElement>(".tape-pile");
         if (pile) {
           const strips = gsap.utils.toArray<HTMLElement>(".tp");
-          /* Physics drop (matter-js) on desktop; CSS strips stay as the
-             static fallback on mobile / reduced motion (handled in CSS/JSX). */
-          if (window.innerWidth > 900) {
-            pile.classList.add("phys");
-            let raf = 0;
-            let alive = true;
-            let cursor = { x: -1e4, y: -1e4 };
-            ScrollTrigger.create({
-              trigger: ".footer", start: "top 80%", once: true,
-              onEnter: async () => {
-                const M = await import("matter-js");
-                const W = pile.clientWidth;
-                const H = pile.clientHeight;
-                const engine = M.Engine.create({ gravity: { y: 1.5 } });
-                const T = 600;
-                M.Composite.add(engine.world, [
-                  M.Bodies.rectangle(W / 2, H + T / 2 - 14, W * 2, T, { isStatic: true }),
-                  M.Bodies.rectangle(-T / 2, H / 2, T, H * 3, { isStatic: true }),
-                  M.Bodies.rectangle(W + T / 2, H / 2, T, H * 3, { isStatic: true }),
-                ]);
-                const bodies = strips.map((el, i) => {
-                  const b = M.Bodies.rectangle(
-                    W * (0.16 + (i / Math.max(1, strips.length - 1)) * 0.68),
-                    -120 - i * 110,
-                    el.offsetWidth,
-                    el.offsetHeight,
-                    { restitution: 0.16, friction: 0.72, frictionAir: 0.016, angle: (i % 2 ? 1 : -1) * (0.24 + (i % 3) * 0.09) },
-                  );
-                  M.Composite.add(engine.world, b);
-                  return b;
-                });
-                const onMove = (e: PointerEvent) => {
-                  const r = pile.getBoundingClientRect();
-                  cursor = { x: e.clientX - r.left, y: e.clientY - r.top };
-                };
-                window.addEventListener("pointermove", onMove);
-                const tick = () => {
-                  if (!alive) return;
-                  M.Engine.update(engine, 1000 / 60);
-                  strips.forEach((el, i) => {
-                    const b = bodies[i];
-                    const dx = b.position.x - cursor.x;
-                    const dy = b.position.y - cursor.y;
-                    if (dx * dx + dy * dy < 170 * 170) {
-                      const f = 1.1 / Math.max(70, Math.sqrt(dx * dx + dy * dy));
-                      M.Body.applyForce(b, b.position, { x: dx * f * 0.0016, y: dy * f * 0.0009 });
-                    }
-                    el.style.transform = `translate(${b.position.x - el.offsetWidth / 2}px, ${b.position.y - el.offsetHeight / 2}px) rotate(${b.angle}rad)`;
-                  });
-                  raf = requestAnimationFrame(tick);
-                };
-                tick();
-                (pile as HTMLElement & { _teardown?: () => void })._teardown = () => {
-                  alive = false;
-                  cancelAnimationFrame(raf);
-                  window.removeEventListener("pointermove", onMove);
-                };
-              },
-            });
-          } else {
-            ScrollTrigger.create({
-              trigger: ".footer", start: "top 80%", once: true,
-              onEnter: () => {
-                strips.forEach((s, i) => {
-                  gsap.fromTo(s, { yPercent: -160, rotation: 0, opacity: 0 },
-                    { yPercent: 0, opacity: 1, rotation: (i - 2.5) * 7, duration: 1.1, ease: "bounce.out", delay: i * 0.08 });
-                });
-              },
-            });
-          }
-          }
+          ScrollTrigger.create({
+            trigger: ".footer", start: "top 75%", once: true,
+            onEnter: () => {
+              strips.forEach((s, i) => {
+                gsap.fromTo(s, { yPercent: -175, opacity: 0 },
+                  { yPercent: 0, opacity: 1, duration: 1.05, ease: "bounce.out", delay: i * 0.06 });
+              });
+            },
+          });
+        }
 
           /* section heading reveals outside pins */
         gsap.utils.toArray<HTMLElement>(".folders-head h2, .foot-cta h2").forEach((h) => {

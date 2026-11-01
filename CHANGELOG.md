@@ -1,5 +1,20 @@
 # Changelog — fix report (Fix-Report-and-Prompt.pdf), verified at 1920×1080, 1440×810, 390×844
 
+## Reference match pass ("not even 30% match" audit) — frame-by-frame vs PDF landscape pages + fx frames
+
+| Section | Change |
+|---|---|
+| Hero | Headline 8vw→6.5vw (ref ≈95px @1440); bust enlarged to 158% vh, cropped at the fold like ref pg-000; cards layered ON TOP of the bust (z-index), like every ref frame |
+| Marquee | Book enlarged to 470px; timeline holds the OPEN spread ($18 CAC yellow + orange) ~58% of the pin, then flips |
+| Crowd | Zoom reworked to ref tightness: 1→2.35× with accelerating ease + downward drift, holds the framed figure, THEN slabs rise at 72%/78% |
+| Case decks | Front cards ~47vw / deck band 82% of panel height (ref ~85%) |
+| Scatter | Photo card 40vw×54vh; spread widened to full viewport edge-to-edge (ref pg-029); white 2px outlines on all cards |
+| Logo emblem | Placeholder REGENERATED as the chevron-W crown from pg-030 (mirrored chevron wings, center-gap white-hot core, column stand, floor ellipse); cache-busted ?v=2 |
+| Process | Ribbon thickened 34→46; nodes 58→84px chips (inactive gray/white, active black/yellow like ref pg-031–033) |
+| Testimonials | Flap layout flipped to ref pg-034/035: tall yellow flap with big serif name at bottom, quote paper peeking on top; names 34px |
+| Footer | 10 ribbons (was 6), each ~2× thick, denser pile 44vh; physics replaced with deterministic staggered drop (matter-js out of the bundle) |
+| A11y | Inactive process chips darkened + subtitle #63625c — axe now 0 violations on mobile AND desktop; Lighthouse A100 |
+
 ## Round 2 review (Round2-Review-and-Prompt.pdf / fix-prompt-2.txt) — verified 1440×810 + 390×844
 
 | # | Item | Status | Evidence / notes |
