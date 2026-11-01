@@ -9,7 +9,7 @@ export default function Noise() {
     <section className="noise" id="about" aria-label="Stand out from the noise">
       <div className="noise-pin">
         <div className="noise-img" aria-hidden="true">
-          <Image src="/images/crowd-3d.jpg" alt="" fill sizes="100vw" quality={85} />
+          <Image src="/images/crowd.webp" alt="" fill sizes="100vw" quality={85} />
         </div>
         <div className="noise-shade" aria-hidden="true" />
         <Mark className="noise-mark" />

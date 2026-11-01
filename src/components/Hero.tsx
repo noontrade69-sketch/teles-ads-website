@@ -53,7 +53,7 @@ export default function Hero() {
           </div>
         ))}
         <div className="hero-bustwrap">
-          <Image src="/images/hero-mannequin-cut.png" alt="" width={693} height={710} priority sizes="60vw" className="hero-bust" />
+          <Image src="/images/hero-cut.png" alt="" width={742} height={1220} priority sizes="60vw" className="hero-bust" />
         </div>
       </div>
 

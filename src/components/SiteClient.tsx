@@ -189,6 +189,7 @@ const sent = document.querySelector<HTMLElement>(".marquee-sentence");
               .fromTo(".sc-1", { x: 0, y: 0, scale: 0.5, opacity: 0 }, { x: "-21vw", y: "-17vh", scale: 1, opacity: 1, ease: "none", duration: 0.28 }, 0.64)
               .fromTo(".sc-2", { x: 0, y: 0, scale: 0.4, opacity: 0 }, { x: "-9vw", y: "-21vh", scale: 1, opacity: 1, ease: "none", duration: 0.28 }, 0.66)
               .fromTo(".sc-3", { x: 0, y: 0, scale: 0.5, opacity: 0 }, { x: "19vw", y: "-15vh", scale: 1, opacity: 1, ease: "none", duration: 0.28 }, 0.66)
+              .fromTo(".sc-4", { x: 0, y: 0, scale: 0.4, opacity: 0 }, { x: "-24vw", y: "19vh", scale: 1, opacity: 1, ease: "none", duration: 0.28 }, 0.68)
               .fromTo(".glitch", { opacity: 0.9 }, { opacity: 0.4, ease: "none", duration: 0.3 }, 0.7)
               .to(".scard", { xPercent: -4, scale: 0.94, ease: "none", duration: 0.14 }, 0.86);
             gsap.utils.toArray<HTMLElement>(".deck").forEach((deck, i) => {
